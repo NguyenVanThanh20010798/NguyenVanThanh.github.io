@@ -14,23 +14,25 @@ public class Main {
     }
 
     public static double khoangCanh(Point a, Point b){
-        double d1 = Math.sqrt((a.getX()-b.getX()*(a.getX()-b.getX())+(a.getY()-b.getY())*(a.getY()-b.getY())));
+        double d1 = Math.sqrt((a.getX()-b.getX())*(a.getX()-b.getX())+(a.getY()-b.getY())*(a.getY()-b.getY()));
         return d1;
     }
     public static double chuVi(Point a, Point b,Point c) {
         if (thangHang(a, b, c) == 1) {
             System.out.printf("3 diem thang hang khong the tinh");
             return 0;
-        }
+        }else {
             return khoangCanh(a, b) + khoangCanh(a, c) + khoangCanh(c, b);
+        }
     }
     public static double dienTich(Point a,Point b, Point c){
         if(thangHang(a,b,c) == 1){
             System.out.printf("3 diem thang hang khong the tinh");
             return 0;
+        }else {
+            double n = chuVi(a, b, c) / 2;
+            return Math.sqrt((n * (n - khoangCanh(a, b)) * (n - khoangCanh(a, c)) * (n - khoangCanh(c, b))));
         }
-            double n = chuVi(a,b,c)/2;
-            return Math.sqrt((n*(n-khoangCanh(a,b))*(n-khoangCanh(b,c))*(n-khoangCanh(c,b))));
     }
     public static void main(String[] args) {
 	Point a = new Point(1,4);
